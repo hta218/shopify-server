@@ -15,6 +15,7 @@ const {
 } = process.env;
 
 router.get('/', (req, res) => {
+  // NOTE: THE REQUEST MUST BE PROVIDED FROM A NGROK TUNNEL
   let shop = req.query.shop;
 
   if (shop) {

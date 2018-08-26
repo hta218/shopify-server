@@ -1,9 +1,11 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+const route = require('./routes');
 
-const route = require('./route');
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.status(200).json({message: "Test request successfully"});
