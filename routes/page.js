@@ -3,14 +3,14 @@ const request = require('request-promise');
 const router = express.Router();
 
 const shop = process.env.SHOPIFY_SHOP_NAME;
-const productRequestUrl = `https://${shop}/admin/products.json`;
+const pageRequestUrl = `https://${shop}/admin/pages.json`;
 
 router.get('/', (req, res) => {
   let shopRequestHeaders = {
     'X-Shopify-Access-Token': req.query['X-Shopify-Access-Token']
   };
 
-  request.get(productRequestUrl, { headers: shopRequestHeaders })
+  request.get(pageRequestUrl, { headers: shopRequestHeaders })
     .then((shopResponse) => {
       res.status(200).send(shopResponse);
     })
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 
   request({
     method: 'POST',
-    uri: productRequestUrl, 
+    uri: pageRequestUrl, 
     headers: shopRequestHeaders, 
     body: req.body,
     json: true
@@ -45,7 +45,7 @@ router.put('/:id', (req, res) => {
   
   request({
     method: 'PUT',
-    uri: `https://${shop}/admin/products/${req.params.id}.json`, 
+    uri: `https://${shop}/admin/pages/${req.params.id}.json`, 
     headers: shopRequestHeaders, 
     body: req.body,
     json: true
@@ -64,7 +64,7 @@ router.delete('/:id', (req, res) => {
 
   request({
     method: 'DELETE',
-    uri: `https://${shop}/admin/products/${req.params.id}.json`, 
+    uri: `https://${shop}/admin/pages/${req.params.id}.json`, 
     headers: shopRequestHeaders, 
   }).then((shopResponse) => {
       res.status(200).send(shopResponse);
