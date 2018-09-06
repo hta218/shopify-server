@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 
 app.use('/', route);
 
+// fucking remember this: PORT not port
 const port = process.env.PORT || 6969;
 
 app.listen(port, () => console.log(`Shopify server is running on port ${port}`));
