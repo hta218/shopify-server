@@ -10,10 +10,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.status(200).json({message: "Test request successfully"});
+  res.status(200).json({ message: "Test request successfully" });
 });
 
 app.use('/', route);
 
-const { port } = process.env || 3434;
+const port = process.env.port || 3434;
+
 app.listen(port, () => console.log(`Shopify server is running on port ${port}`));
